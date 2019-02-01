@@ -1,36 +1,28 @@
 from math import sqrt
 
-class Number():
-    def __init__(self,value):
-        self.number = value
+def DivisibleBy(this,that):
+    if this % that == 0:
+        return True
+    else:
+        return False
 
-    def DivisibleBy(self,this):
-        if self.number % this == 0:
-            return True
-            break
-        else:
-            return False
-            break
-
-def isPrime(Number):
-    divisor = 2
+def GetDivisors(number):
+    d = 2
     divisors = []
-    while divisor <= sqrt(Number.number):
-        if Number.DivisibleBy(divisor):
-            print(divisor)
-            divisor += 1
-            continue
-        #     print("{} is divisible by {}".format(Number.number,divisor))
-        #     divisors.append(divisor)
-        #     divisor += 1
-        #     continue
+    while d <= int(number/2):
+        if DivisibleBy(number,d):
+            divisors.append(d)
+            d += 1
+        else:
+            d += 1
+    print(divisors)
 
 
 
+# def isPrime(Number):
 
 
-n = Number(687)
-print(sqrt(n.number))
-isPrime(n)
+GetDivisors(6983247)
+
 
 
