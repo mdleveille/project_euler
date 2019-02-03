@@ -1,12 +1,29 @@
-"""code for project euler, problem 5: smallest multiple"""
-import numpy as np
+"""
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 
-n = np.arange(1,21)
-number = 2521
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+"""
+# LOOKED UP
 
-for i in n:
-	if number % i != 0:
-		number = number +1
-	else:
-		print(number)
-	
+def gcd(a,b):
+    """Compute the greatest common divisor of a and b"""
+    while b > 0:
+        a, b = b, a % b
+        # print(a,b)
+    return a
+
+def find_lcm(a, b):
+    """Compute the lowest common multiple of a and b"""
+    return int(a * b / gcd(a, b))
+
+numbers = range(2,21)
+num1 = numbers[0]
+num2 = numbers[1]
+
+lcm = find_lcm(num1, num2)
+
+for number in numbers:
+    # print("=={}==".format(number))
+    lcm = find_lcm(lcm, number)
+
+print(lcm)
