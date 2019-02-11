@@ -16,3 +16,42 @@ We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?
 """
+def triangle(n):
+    """
+    Calculate the nth triangle number
+    """
+    result = 0
+    for i in range(1,n+1):
+        result += i
+    return result
+
+def GetLenFactors(number):
+    factors = []
+    numfac = 0
+    for factor1 in range(1, int(number**0.5)+1):
+        if number % factor1 == 0:
+            numfac += 2
+    return numfac
+
+
+# n = 1
+# while True:
+#     tri = triangle(n)
+#     numfac = GetLenFactors(tri)
+#     print(n, tri, numfac)
+#     if numfac > 500:
+#         print(n, tri, numfac)
+#         break
+#     else:
+#         n += 1
+
+n = 1
+tri = triangle(n)
+numfac = GetLenFactors(tri)
+while numfac < 500:
+    print(n, tri, numfac)
+    tri = triangle(n)
+    numfac = GetLenFactors(tri)
+    n += 1
+print(n, tri, numfac)
+
